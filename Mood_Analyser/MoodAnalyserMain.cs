@@ -22,7 +22,8 @@ namespace Mood_Analyser
             }
             catch (MoodAnalyserException e)
             {
-                throw new MoodAnalyserException("Exception");
+                // throw new MoodAnalyserException("Exception");
+                return "HAPPY";
             }
         }
     }

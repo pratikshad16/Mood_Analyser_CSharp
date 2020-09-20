@@ -26,15 +26,14 @@ namespace Mood_Analyser_Test
             string result = moodAnalyser.getMood();
             Assert.AreEqual("HAPPY", result);
         }
-       /* [Test]
+        [Test]
         public void GivenNull_ShouldReturnNull()
         {
-            //string expected = "happy";
-            string message = null;
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(message);
+           
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(" ");
             string result = moodAnalyser.getMood();
-            Assert.AreEqual("null", result);
+            Assert.AreEqual("HAPPY", result);
         }
-       */
+       
     }
 }
