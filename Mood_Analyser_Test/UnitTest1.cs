@@ -1,4 +1,6 @@
+using Mood_Analyser;
 using NUnit.Framework;
+
 
 namespace Mood_Analyser_Test
 {
@@ -10,9 +12,11 @@ namespace Mood_Analyser_Test
         }
 
         [Test]
-        public void Test1()
+        public void givenMessage_WhenSadMood_ShouldReturnSad()
         {
-            Assert.Pass();
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain();
+            string result = moodAnalyser.getMood("sad");
+            Assert.AreEqual("SAD", result);
         }
     }
 }
