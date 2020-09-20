@@ -14,6 +14,7 @@ namespace Mood_Analyser_Test
         [Test]
         public void givenMessage_WhenSadMood_ShouldReturnSad()
         {
+
             MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
             string result = moodAnalyser.getMood();
             Assert.AreEqual("SAD", result);
@@ -25,5 +26,15 @@ namespace Mood_Analyser_Test
             string result = moodAnalyser.getMood();
             Assert.AreEqual("HAPPY", result);
         }
+       /* [Test]
+        public void GivenNull_ShouldReturnNull()
+        {
+            //string expected = "happy";
+            string message = null;
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(message);
+            string result = moodAnalyser.getMood();
+            Assert.AreEqual("null", result);
+        }
+       */
     }
 }
