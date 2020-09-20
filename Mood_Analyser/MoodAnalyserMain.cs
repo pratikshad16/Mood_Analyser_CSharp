@@ -8,7 +8,7 @@ namespace Mood_Analyser
     {
         public string getMood(string message)
         {
-            if (message.Contains("sad"))
+            if (message.Contains("I am in sad mood"))
                 return "SAD";
             else
                 return "HAPPY";
