@@ -14,15 +14,15 @@ namespace Mood_Analyser_Test
         [Test]
         public void givenMessage_WhenSadMood_ShouldReturnSad()
         {
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain();
-            string result = moodAnalyser.getMood("I am in sad mood");
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
+            string result = moodAnalyser.getMood();
             Assert.AreEqual("SAD", result);
         }
         [Test]
         public void givenMessage_WhenAnyMood_ShouldReturnHappy()
         {
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain();
-            string result = moodAnalyser.getMood("I am in any mood");
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
+            string result = moodAnalyser.getMood();
             Assert.AreEqual("HAPPY", result);
         }
     }
