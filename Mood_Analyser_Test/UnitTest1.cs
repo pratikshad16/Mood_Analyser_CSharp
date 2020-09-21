@@ -129,5 +129,20 @@ namespace Mood_Analyser_Test
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
             }
         }
+        [Test]
+        public void GivenMoodAnalyserWithParameterConstructorButWrongClassName_shouldThrowMoodAnalyserException()
+        {
+            try
+            {
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator();
+                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+                ("Mood_Analyser.MoodAnalyserMainClass", constructorInfo, "I am in happy mood");
+
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
+            }
+        }
     }
 }
