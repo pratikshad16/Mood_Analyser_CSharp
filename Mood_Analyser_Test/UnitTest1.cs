@@ -21,13 +21,13 @@ namespace Mood_Analyser_Test
                 string result = moodAnalyser.AnalyseMood();
                 Assert.AreEqual("SAD", result);
             }
-            catch (MoodAnalyserException e)
+            catch (MoodAnalyserException)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
             }
         }
         [Test]
-        public void givenMessage_WhenAnyMood_ShouldReturnHappy()
+        public void GivenMessage_WhenAnyMood_ShouldReturnHappy()
         {
             try
             {
@@ -35,13 +35,13 @@ namespace Mood_Analyser_Test
                 string result = moodAnalyser.AnalyseMood();
                 Assert.AreEqual("HAPPY", result);
             }
-            catch (MoodAnalyserException e)
+            catch (MoodAnalyserException)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
             }
         }
         [Test]
-        public void givenMessage_whenNull_shouldReturnHappy()
+        public void GivenMessage_whenNull_shouldReturnHappy()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void givenMessage_whenEmpty_shouldThrowMoodAnalyserException()
+        public void GivenMessage_whenEmpty_shouldThrowMoodAnalyserException()
         {
             try
             {
@@ -69,7 +69,7 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void givenMoodAnalyserClassName_shouldReturnMoodAnalyserObject()
+        public void GivenMoodAnalyserClassName_shouldReturnMoodAnalyserObject()
         {
             try
             {
@@ -79,13 +79,13 @@ namespace Mood_Analyser_Test
                 MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
                 Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
             }
-            catch (MoodAnalyserException e)
+            catch (MoodAnalyserException)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
             }
         }
         [Test]
-        public void givenMoodAnalyserClassWithWrongName_shouldReturnMoodAnalyserException()
+        public void GivenMoodAnalyserClassWithWrongName_shouldReturnMoodAnalyserException()
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void givenMoodAnalyserWithWrongConstructor_shouldThrowMoodAnalyserException()
+        public void GivenMoodAnalyserWithWrongConstructor_shouldThrowMoodAnalyserException()
         {
             try
             {
@@ -115,7 +115,7 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void givenMoodAnalyserWithParameterConstructorWhenProper_shouldReturnMoodAnalyserObject()
+        public void GivenMoodAnalyserWithParameterConstructorWhenProper_shouldReturnMoodAnalyserObject()
         {
             try
             {

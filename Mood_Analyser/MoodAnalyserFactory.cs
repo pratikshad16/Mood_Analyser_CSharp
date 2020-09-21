@@ -62,7 +62,7 @@ namespace Mood_Analyser
                 MoodAnalyserMain reflectionGenratedObject = (MoodAnalyserMain)Activator.CreateInstance(type);
                 return reflectionGenratedObject;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 
                 return new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "Invalid Input");

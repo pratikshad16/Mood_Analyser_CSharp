@@ -30,7 +30,7 @@ namespace Mood_Analyser
                 else
                     return "HAPPY";
             }
-            catch (MoodAnalyserException e)
+            catch (MoodAnalyserException)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
             }

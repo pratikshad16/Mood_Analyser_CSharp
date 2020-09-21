@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Mood_Analyser
 {
-   public class MoodAnalyserException : Exception
+    public class MoodAnalyserException : Exception
     {
         public ExceptionType type;
         public enum ExceptionType
