@@ -28,11 +28,12 @@ namespace Mood_Analyser_Test
         [Test]
         public void givenMessage_WhenAnyMood_ShouldReturnHappy()
         {
-            try { 
-                    MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
-                    string result = moodAnalyser.getMood();
-                    Assert.AreEqual("HAPPY", result);
-                }
+            try
+            {
+                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
+                string result = moodAnalyser.getMood();
+                Assert.AreEqual("HAPPY", result);
+            }
             catch (MoodAnalyserException e)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
@@ -80,6 +81,20 @@ namespace Mood_Analyser_Test
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
             }
         }
+        [Test]
+        public void WhenGivenMoodAnalyserWithWrongNameShouldReturnMoodAnalyserObject()
+        {
+            try
+            {
+                MoodAnalyserMain obj = MoodAnalyserFactory.GetMoodAnalyserObject("Mood_Analyser.MoodAnalyserMainClass");
+                MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
 
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
+
+            }
+        }
     }
 }
