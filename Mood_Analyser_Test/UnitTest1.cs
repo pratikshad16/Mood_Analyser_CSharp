@@ -82,7 +82,7 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void WhenGivenMoodAnalyserWithWrongNameShouldReturnMoodAnalyserObject()
+        public void givenMoodAnalyserClassWithWrongName_shouldReturnMoodAnalyserException()
         {
             try
             {
