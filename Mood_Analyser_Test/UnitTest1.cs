@@ -144,5 +144,21 @@ namespace Mood_Analyser_Test
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
             }
         }
+        [Test]
+        public void GivenMoodAnalyserWithParameterConstructorWhenWrongConstructorName_shouldThrowMoodAnalyserException()
+        {
+            try
+            {
+                String className = "MoodAnalyser";
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator(className);
+                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+                ("Mood_Analyser.MoodAnalyserMain", constructorInfo, "I am in happy mood");
+
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
+            }
+        }
     }
 }
