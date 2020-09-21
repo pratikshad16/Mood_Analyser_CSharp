@@ -14,26 +14,59 @@ namespace Mood_Analyser_Test
         [Test]
         public void givenMessage_WhenSadMood_ShouldReturnSad()
         {
+            try
+            {
 
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
+                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
             string result = moodAnalyser.getMood();
             Assert.AreEqual("SAD", result);
+            }
+            catch (MoodAnalyserException e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
+            }
         }
         [Test]
         public void givenMessage_WhenAnyMood_ShouldReturnHappy()
         {
+            try { 
             MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
             string result = moodAnalyser.getMood();
             Assert.AreEqual("HAPPY", result);
         }
+            catch (MoodAnalyserException e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
+    }
+}
         [Test]
-        public void GivenNull_ShouldReturnNull()
+        public void givenMessage_whenNull_shouldReturnHappy()
         {
-           
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(" ");
-            string result = moodAnalyser.getMood();
-            Assert.AreEqual("HAPPY", result);
+            try
+            {
+                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("NULL");
+                string result = moodAnalyser.getMood();
+                Assert.AreEqual("HAPPY", result);
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.ENTERED_NULL, e.type);
+            }
         }
-       
+        [Test]
+        public void givenMessage_whenEmpty_shouldReturn_Happy()
+        {
+            try
+            {
+                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(" ");
+                string result = moodAnalyser.getMood();
+
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, e.type);
+            }
+        }
+
     }
 }

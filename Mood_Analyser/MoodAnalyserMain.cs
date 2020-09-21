@@ -22,8 +22,7 @@ namespace Mood_Analyser
             }
             catch (MoodAnalyserException e)
             {
-                // throw new MoodAnalyserException("Exception");
-                return "HAPPY";
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
             }
         }
     }
