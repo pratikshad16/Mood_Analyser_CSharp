@@ -66,6 +66,20 @@ namespace Mood_Analyser_Test
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, e.type);
             }
         }
+        [Test]
+        public void givenMoodAnalyserClassName_shouldReturnMoodAnalyserObject()
+        {
+            try
+            {
+                MoodAnalyserMain obj = MoodAnalyserFactory.GetMoodAnalyserObject("Mood_Analyser.MoodAnalyserMain");
+                MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
+                Assert.IsTrue(obj.ToString().Equals(moodAnalyserMain.ToString()));
+            }
+            catch (MoodAnalyserException e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
+            }
+        }
 
     }
 }

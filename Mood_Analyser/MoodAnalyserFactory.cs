@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mood_Analyser
 {
-    class MoodAnalyserFactory
+   public class MoodAnalyserFactory
     {
         public static MoodAnalyserMain GetMoodAnalyserObject(string className)
         {
