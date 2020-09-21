@@ -114,5 +114,20 @@ namespace Mood_Analyser_Test
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
             }
         }
+        [Test]
+        public void givenMoodAnalyserWithParameterConstructorWhenProper_shouldReturnMoodAnalyserObject()
+        {
+            try
+            {
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator(3);
+                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+                ("Mood_Analyser.MoodAnalyserMain", constructorInfo, "I am in happy mood");
+                Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
+            }
+            catch (MoodAnalyserException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
+            }
+        }
     }
 }

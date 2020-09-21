@@ -41,7 +41,7 @@ namespace Mood_Analyser
                 foreach (ConstructorInfo index in constructor)
                 {
                     int numberOfParam = index.GetParameters().Length;
-                    while (numberOfParam == noOfParameters)
+                    if (numberOfParam == noOfParameters)
                     {
                         return index;
                     }
@@ -64,11 +64,11 @@ namespace Mood_Analyser
             }
             catch (Exception e)
             {
-                e.GetType();
+                
                 return new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "Invalid Input");
             }
         }
-        public object InstanceCreator(string className, ConstructorInfo constructor, string message)
+        public static object InstanceCreator(string className, ConstructorInfo constructor, string message)
         {
             try
             {
