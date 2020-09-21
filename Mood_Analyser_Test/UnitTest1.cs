@@ -1,6 +1,7 @@
 using Mood_Analyser;
 using NUnit.Framework;
-
+using System;
+using System.Reflection;
 
 namespace Mood_Analyser_Test
 {
@@ -72,9 +73,11 @@ namespace Mood_Analyser_Test
         {
             try
             {
-                MoodAnalyserMain obj = MoodAnalyserFactory.GetMoodAnalyserObject("Mood_Analyser.MoodAnalyserMain");
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator();
+                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+                ("Mood_Analyser.MoodAnalyserMain", constructorInfo);
                 MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
-                Assert.IsTrue(obj.ToString().Equals(moodAnalyserMain.ToString()));
+                Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
             }
             catch (MoodAnalyserException e)
             {
@@ -86,14 +89,29 @@ namespace Mood_Analyser_Test
         {
             try
             {
-                MoodAnalyserMain obj = MoodAnalyserFactory.GetMoodAnalyserObject("Mood_Analyser.MoodAnalyserMainClass");
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator();
+                object obj = MoodAnalyserFactory.InstanceCreator("MoodAnalyserMain1234", constructorInfo);
                 MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
-
             }
             catch (MoodAnalyserException e)
             {
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
-
+            }
+        }
+        [Test]
+        public void givenMoodAnalyserWithWrongConstructor_shouldThrowMoodAnalyserException()
+        {
+            try
+            {
+                String className = "MoodAnalyser";
+                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator(className);
+                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+                ("Mood_Analyser.MoodAnalyserMain", constructorInfo);
+                MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain("hey");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
             }
         }
     }

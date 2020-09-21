@@ -1,24 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Mood_Analyser
 {
     public class MoodAnalyserFactory
     {
-        public static MoodAnalyserMain GetMoodAnalyserObject(string className)
+        public static ConstructorInfo ConstructorCreator()
+        {
+            try
+            {
+                Type type = typeof(MoodAnalyserMain);
+                ConstructorInfo[] constructor = type.GetConstructors();
+                return constructor[0];
+            }
+            catch (Exception e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.Message);
+            }
+        }
+
+        public static ConstructorInfo ConstructorCreator(string ClassNmae)
+        {
+            try
+            {
+                Type type = Type.GetType(ClassNmae);
+                ConstructorInfo[] constructor = type.GetConstructors();
+                return constructor[0];
+            }
+            catch (Exception e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.Message);
+            }
+        }
+        public static object InstanceCreator(string className, ConstructorInfo constructor)
         {
             try
             {
                 Assembly excutingAssambly = Assembly.GetExecutingAssembly();
                 Type type = excutingAssambly.GetType(className);
-                MoodAnalyserMain MoodAnalyserMainObject = (MoodAnalyserMain)Activator.CreateInstance(type);
-                return MoodAnalyserMainObject;
+                MoodAnalyserMain reflectionGenratedObject = (MoodAnalyserMain)Activator.CreateInstance(type);
+                return reflectionGenratedObject;
             }
             catch (Exception e)
             {
-                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "invalid input");
+                return new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "Invalid Input");
             }
         }
     }
