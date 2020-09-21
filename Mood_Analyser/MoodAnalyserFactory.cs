@@ -98,7 +98,7 @@ namespace Mood_Analyser
             }
             catch (Exception)
             {
-                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "Invalid Input");
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "invalid input");
             }
 
         }

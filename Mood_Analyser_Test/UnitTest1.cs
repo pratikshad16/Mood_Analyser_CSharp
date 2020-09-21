@@ -160,5 +160,18 @@ namespace Mood_Analyser_Test
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
             }
         }
+        [Test]
+        public void GivenHappyMessageUsingReflectionWhenProper_shouldReturnHappy()
+        {
+            try
+            {
+                string message = MoodAnalyserFactory.GetMethod("Mood_Analyser.MoodAnalyserMain", "GetMood", "happy");
+                Assert.AreEqual("HAPPY", message);
+            }
+            catch (MoodAnalyserException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
+            }
+        }
     }
 }
