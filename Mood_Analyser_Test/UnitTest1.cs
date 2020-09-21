@@ -16,10 +16,9 @@ namespace Mood_Analyser_Test
         {
             try
             {
-
                 MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
-            string result = moodAnalyser.getMood();
-            Assert.AreEqual("SAD", result);
+                string result = moodAnalyser.getMood();
+                Assert.AreEqual("SAD", result);
             }
             catch (MoodAnalyserException e)
             {
@@ -30,15 +29,15 @@ namespace Mood_Analyser_Test
         public void givenMessage_WhenAnyMood_ShouldReturnHappy()
         {
             try { 
-            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
-            string result = moodAnalyser.getMood();
-            Assert.AreEqual("HAPPY", result);
-        }
+                    MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
+                    string result = moodAnalyser.getMood();
+                    Assert.AreEqual("HAPPY", result);
+                }
             catch (MoodAnalyserException e)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NotAValidInput, "Please entered valid input");
-    }
-}
+            }
+        }
         [Test]
         public void givenMessage_whenNull_shouldReturnHappy()
         {
@@ -54,11 +53,11 @@ namespace Mood_Analyser_Test
             }
         }
         [Test]
-        public void givenMessage_whenEmpty_shouldReturn_Happy()
+        public void givenMessage_whenEmpty_shouldThrowMoodAnalyserException()
         {
             try
             {
-                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain(" ");
+                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("");
                 string result = moodAnalyser.getMood();
 
             }
