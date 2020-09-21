@@ -173,5 +173,17 @@ namespace Mood_Analyser_Test
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "wrong file");
             }
         }
+        [Test]
+        public void GivenHappyMessageUsingReflectionWhenImproperMethod_shouldThrowMoodAnayserException()
+        {
+            try
+            {
+                string message = MoodAnalyserFactory.GetMethod("Mood_Analyser.MoodAnalyserMain", "getMethod", "happy");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
+            }
+        }
     }
 }
