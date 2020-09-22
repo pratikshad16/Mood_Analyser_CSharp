@@ -15,23 +15,23 @@ namespace Mood_Analyser_Test
         [Test]
         public void givenMessage_WhenSadMood_ShouldReturnSad()
         {
-                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
-                string result = moodAnalyser.AnalyseMood();
-                Assert.AreEqual("SAD", result);
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in sad mood");
+            string result = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("SAD", result);
         }
         [Test]
         public void GivenMessage_WhenAnyMood_ShouldReturnHappy()
         {
-                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
-                string result = moodAnalyser.AnalyseMood();
-                Assert.AreEqual("HAPPY", result);
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("I am in any mood");
+            string result = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("HAPPY", result);
         }
         [Test]
         public void GivenMessage_whenNull_shouldReturnHappy()
         {
-                MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("NULL");
-                string result = moodAnalyser.AnalyseMood();
-                Assert.AreEqual("HAPPY", result);
+            MoodAnalyserMain moodAnalyser = new MoodAnalyserMain("NULL");
+            string result = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("HAPPY", result);
         }
         [Test]
         public void GivenMessage_whenEmpty_shouldThrowMoodAnalyserException()
@@ -50,11 +50,11 @@ namespace Mood_Analyser_Test
         [Test]
         public void GivenMoodAnalyserClassName_shouldReturnMoodAnalyserObject()
         {
-                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator();
-                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
-                ("Mood_Analyser.MoodAnalyserMain", constructorInfo);
-                MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
-                Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
+            ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator();
+            MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+            ("Mood_Analyser.MoodAnalyserMain", constructorInfo);
+            MoodAnalyserMain moodAnalyserMain = new MoodAnalyserMain();
+            Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
         }
         [Test]
         public void GivenMoodAnalyserClassWithWrongName_shouldReturnMoodAnalyserException()
@@ -68,7 +68,7 @@ namespace Mood_Analyser_Test
             catch (MoodAnalyserException e)
             {
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
-            } 
+            }
         }
         [Test]
         public void GivenMoodAnalyserWithWrongConstructor_shouldThrowMoodAnalyserException()
@@ -89,10 +89,10 @@ namespace Mood_Analyser_Test
         [Test]
         public void GivenMoodAnalyserWithParameterConstructorWhenProper_shouldReturnMoodAnalyserObject()
         {
-                ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator(3);
-                MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
-                ("Mood_Analyser.MoodAnalyserMain", constructorInfo, "I am in happy mood");
-                Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
+            ConstructorInfo constructorInfo = MoodAnalyserFactory.ConstructorCreator(3);
+            MoodAnalyserMain obj = (MoodAnalyserMain)MoodAnalyserFactory.InstanceCreator
+            ("Mood_Analyser.MoodAnalyserMain", constructorInfo, "I am in happy mood");
+            Assert.IsInstanceOf(typeof(MoodAnalyserMain), obj);
         }
         [Test]
         public void GivenMoodAnalyserWithParameterConstructorButWrongClassName_shouldThrowMoodAnalyserException()
@@ -148,6 +148,18 @@ namespace Mood_Analyser_Test
         {
             dynamic result = MoodAnalyserFactory.ChangeTheMood("Mood_Analyser.MoodAnalyserMain", "happy");
             Assert.AreEqual("HAPPY", result);
+        }
+        [Test]
+        public void ChangeMoodDynamically_WhenNull_ShouldThrowException()
+        {
+            try
+            {
+                dynamic result = MoodAnalyserFactory.ChangeTheMood("MoodAnalyserProblem.MoodAnalyserMain", null);
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.ENTERED_NULL, e.type);
+            }
         }
     }
 }
