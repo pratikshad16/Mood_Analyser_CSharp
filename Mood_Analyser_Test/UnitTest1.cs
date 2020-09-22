@@ -143,5 +143,11 @@ namespace Mood_Analyser_Test
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.INVALID_INPUT, e.type);
             }
         }
+        [Test]
+        public void ChangeMoodDynamically()
+        {
+            dynamic result = MoodAnalyserFactory.ChangeTheMood("Mood_Analyser.MoodAnalyserMain", "happy");
+            Assert.AreEqual("HAPPY", result);
+        }
     }
 }
