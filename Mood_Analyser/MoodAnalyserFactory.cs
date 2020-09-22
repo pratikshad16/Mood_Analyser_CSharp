@@ -100,7 +100,6 @@ namespace Mood_Analyser
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.INVALID_INPUT, "invalid input");
             }
-
         }
     }
 }

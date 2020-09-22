@@ -9,7 +9,7 @@ namespace Mood_Analyser
             NotAValidInput, ENTERED_EMPTY, ENTERED_NULL,
             INVALID_INPUT
         }
-        string message;
+         string message;
         public MoodAnalyserException(ExceptionType type, String message)
         {
             this.type = type;
